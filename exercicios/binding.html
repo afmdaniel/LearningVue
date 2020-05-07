@@ -7,9 +7,25 @@
     <script src="/js/vue.min.js"></script>
 </head>
 <body class="exercicio">
-
+    <div id="app">
+        <p><a v-bind:href="link" target="_blank">LinkedIn</a></p>
+        <p><a :href="link" target="_blank">Same LinkedIn</a></p>
+        <p>
+            <input type="text" v-model="nome"><br>
+            <span>{{ nome }}</span>
+        </p>
+    </div>
     <script>
-        // ...
+        vm = new Vue({
+            el: "#app",
+            data: {
+                nome: "Daniel",
+                link: "https://linkedin.com/in/daniel-afm"
+            },
+            watch: {
+                nome: (nomeNovo, nomeAntigo) => console.log("Antes: " + nomeAntigo + " Depois: " + nomeNovo)
+            }
+        })
     </script>
 </body>
 </html>
