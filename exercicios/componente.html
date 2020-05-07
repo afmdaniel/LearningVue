@@ -7,9 +7,28 @@
     <script src="/js/vue.min.js"></script>
 </head>
 <body class="exercicio">
+    <div id="app">
+        <counter-button title="Contador 1"></counter-button>
+        <counter-button title="Contador 2"></counter-button>
+        <counter-button title="Contador 3"></counter-button>
+    </div>
 
     <script>
-        // ...
+        Vue.component('counter-button', {
+            props: ['title'],
+            data: function() {
+                return {
+                    contador: 0
+                }
+            },
+            template: `
+                <button @click="contador++"> {{title}}: {{contador}}</button>
+            `
+        })
+
+        const vm = new Vue({
+            el: "#app",
+        })
     </script>
 </body>
 </html>
