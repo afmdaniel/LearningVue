@@ -27,8 +27,7 @@
                     <tr v-for="sale in sales">
                         <td> {{ sale.id }} </td>
                         <td> {{ sale.name }} </td>
-                        <td v-money="'R$'"> {{ sale.price }}</td>
-                        <!-- <td> {{ Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL'}).format(sale.price) }} </td> -->
+                        <td> {{ Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL'}).format(sale.price) }} </td>
                         <td> {{ sale.qtde }} </td>
                         <td> {{ sale.date }} </td>
                     </tr>
@@ -37,14 +36,6 @@
         </div>
     </div>
     <script>
-        Vue.directive('money', {
-            inserted(el, binding) {
-                const amount = parseFloat(el.innerHTML).toFixed(2)
-                    .replace('.',',')
-                    .replace(/(\d)(?=(\d{3})+\,)/g, '$1.')
-                el.innerHTML = `${binding.value} ${amount}`
-            }
-        })
 
         const vm = new Vue({
             el: '#app',
